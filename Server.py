@@ -4,27 +4,25 @@ import sys
 
 server = socket.socket()
 clients = {}
+lt = None       #variable for listening thread
+rt = None       #variable for response thread
 
 class ListeningThread(threading.Thread):
     """A thread listening for new connections to the server"""
-
-    def __init__(self):
-        threading.Thread.__init__(self)
 
     def run(self):
         print("Listening for new clients...")
         listen_and_connect()
 
-class NewClientThread(threading.Thread):
+class AddClientThread(threading.Thread):
     """A thread for handling new clients entering the chat room"""
 
     def __init__(self, conn, name = "new client"):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, name = name)
         self.client = conn
-        self.name = name
 
     def run(self):
-        print("\nAdding new client")
+        print("\nAdding new client", self.name)
         try:
             add_client(self.client)
         except ConnectionResetError:
@@ -34,8 +32,7 @@ class ResponseThread(threading.Thread):
     """A thread for handling a client's messages"""
 
     def __init__(self, name):
-        threading.Thread.__init__(self)
-        self._name = name
+        threading.Thread.__init__(self, name = name)
 
     def run(self):
         try:
@@ -67,9 +64,9 @@ def listen_and_connect():
         while True:
             server.listen(5)
             conn, addr = server.accept()
-            tempName = str(addr[1])
-            nct = NewClientThread(conn)
-            nct.start()
+            tempName = str(addr)
+            act = AddClientThread(conn, tempName)
+            act.start()
     except socket.error as err:
         print("Listening and connecting has failed:\n", str(err))
         sys.exit(1)
@@ -106,7 +103,7 @@ def receive_message(sender):
         if text.lower() == "exit":
             goodbye = str.encode("You have left the chat room. Goodbye!")
             conn.send(goodbye)
-            remove_user(sender)
+            remove_client(sender)
             text = "{0} has left the room.".format(sender)
             system_message(text)
             count()
@@ -133,8 +130,8 @@ def system_message(text):
     for user in clients:
         clients[user].send(text)
 
-def remove_user(user):
-    """Removes the given user from clients and closes their connection"""
+def remove_client(user):
+    """Removes the given client from clients dict. and closes their connection"""
     global clients
     clients[user].close()
     del clients[user]
@@ -146,7 +143,7 @@ def count():
 
 def client_disconnect(name = ""):
     if name in clients: # Runs when a ResponseThread exception is caught
-        remove_user(name)
+        remove_client(name)
         print("Connection lost with", name)
         system_message("{0} has left the room.".format(name))
         count()
