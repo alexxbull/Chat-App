@@ -8,8 +8,17 @@ My attempt at creating a multithreaded chat application in Python.
 ### BUGS
 * The GUI scripts will continue running in the OS as a process unless manually terminated in the OS (i.e: Task Manager) 
 
+### Screenshots
+
+#### Server
+![Server UI](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/server.jpg)
+
+#### Client
+![Client 1](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/john-client.jpg)
+![Client 2](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/mary-client.png)
+
 ### Goals
 - [x] make basic chat app (command line)
 - [x] implement a GUI
 - [ ] make a more fancy GUI
-- [ ] clean up code
+- [x] clean up code
