@@ -1,4 +1,4 @@
-# Chat App
+# Chat Room
 My attempt at creating a multithreaded chat application in Python. 
 
 ### NOTE
