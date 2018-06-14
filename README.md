@@ -10,12 +10,12 @@ My attempt at creating a multithreaded chat application in Python.
 
 ### Screenshots
 
-#### Server
-![Server UI](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/server.jpg)
-
 #### Client
 ![Client 1](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/john-client.jpg)
 ![Client 2](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/mary-client.png)
+
+#### Server
+![Server UI](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/server.jpg)
 
 ### Goals
 - [x] make basic chat app (command line)
