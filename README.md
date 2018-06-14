@@ -1,5 +1,5 @@
 # Chat Room
-My attempt at creating a multithreaded chat application in Python. 
+My attempt at creating a multithreaded chat room application in Python. 
 
 ### NOTE
 * The code is written to default to localhost for the server and client
