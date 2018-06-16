@@ -11,8 +11,8 @@ My attempt at creating a multithreaded chat room application in Python.
 ### SCREENSHOTS
 
 #### Client
-![Client 1](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/john-client.jpg)
-![Client 2](https://github.com/alexxbull/Chat-App/blob/master/Screenshots/mary-client.png)
+![Client 1](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/john-client.jpg)
+![Client 2](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/mary-client.png)
 
 #### Server
 ![Server UI](https://raw.githubusercontent.com/alexxbull/Chat-App/master/Screenshots/server.jpg)
